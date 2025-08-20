@@ -22,12 +22,7 @@ public class BeanScanner {
     public void scan() {
         Reflections reflections = new Reflections(basePackage);
 
-        Stream.of(
-                reflections.getTypesAnnotatedWith(Component.class),
-                reflections.getTypesAnnotatedWith(Service.class),
-                reflections.getTypesAnnotatedWith(Repository.class),
-                reflections.getTypesAnnotatedWith(Configuration.class)
-        )
+        Stream.of(reflections.getTypesAnnotatedWith(Component.class))
                 .flatMap(Set::stream)
                 .filter(clazz -> !clazz.isInterface() && !clazz.isAnnotation() && !clazz.isEnum())
                 .forEach(clazz -> {
