@@ -5,19 +5,16 @@ import com.ll.framework.ioc.annotations.Configuration;
 import com.ll.framework.ioc.annotations.Repository;
 import com.ll.framework.ioc.annotations.Service;
 import com.ll.standard.util.Ut;
+import lombok.RequiredArgsConstructor;
 import org.reflections.Reflections;
 
 import java.util.Set;
 import java.util.stream.Stream;
 
+@RequiredArgsConstructor
 public class BeanScanner {
     private final String basePackage;
     private final BeanRegistry beanRegistry;
-
-    public BeanScanner(String basePackage, BeanRegistry beanRegistry) {
-        this.basePackage = basePackage;
-        this.beanRegistry = beanRegistry;
-    }
 
     public void scan() {
         Reflections reflections = new Reflections(basePackage);

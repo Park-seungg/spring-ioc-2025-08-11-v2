@@ -1,17 +1,14 @@
 package com.ll.framework.ioc;
 
 import com.ll.standard.util.Ut;
+import lombok.RequiredArgsConstructor;
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
+@RequiredArgsConstructor
 public class DependencyResolver {
     private final BeanRegistry beanRegistry;
     private final ApplicationContext context;
-
-    public DependencyResolver(BeanRegistry beanRegistry, ApplicationContext context) {
-        this.beanRegistry = beanRegistry;
-        this.context = context;
-    }
 
     public Object createBean(String beanName) {
         Class<?> clazz = beanRegistry.getBeanClass(beanName);
